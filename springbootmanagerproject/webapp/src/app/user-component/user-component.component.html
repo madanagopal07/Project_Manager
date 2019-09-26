@@ -1,0 +1,95 @@
+<div class="container">
+  <!-- <h2>Project Manager</h2>
+  <button type="button" class="btn btn-primary">Add Project</button>
+  <button type="button" class="btn btn-primary">Add Task</button>
+  <button type="button" class="btn btn-primary">Add User</button>
+  <button type="button" class="btn btn-primary">View Task</button>
+  -->
+     
+	 <br>
+	 <form style="background:url(https://wallpapercave.com/wp/7OpNa7a.jpg);">
+    <b>First Name: </b>
+    <input type="text" name="firstName" class="form-control" #FirstName="ngModel" [(ngModel)]="newUser.firstName" 
+    placeholder="Ex: FirstName" maxlength="20" required/><br>
+    <div class="validation-error" *ngIf="FirstName.invalid && FirstName.touched">This fields is required</div>
+    
+    <b>Last Name: </b>
+    <input type="text" name="lastName" class="form-control" #LastName="ngModel" [(ngModel)]="newUser.lastName" 
+    placeholder="Ex: LastType" maxlength="10" required/><br>
+    <div class="validation-error" *ngIf="LastName.invalid && LastName.touched">This fields is required</div>
+ 
+    <b>Employee Id: </b>
+    <input type="text" name="employeeId" class="form-control" #EmployeeId="ngModel" [(ngModel)]="newUser.employeeId" 
+    placeholder="Ex: 123.." pattern="\d{10}" required/><br>
+    <div class="validation-error" *ngIf="EmployeeId.invalid && EmployeeId.touched">This fields is required</div>
+ 
+    <br>
+	 
+	 
+<button type="button" class="btn btn-primary" (click)="addMore()" [disabled]="addEditButtonFlag">Add User</button> 
+<button type="button" class="btn btn-primary" (click)="updateUser(newUser)" [disabled]="!addEditButtonFlag">Update User</button> 
+<button type="button" class="btn btn-primary" (click)="resetData()">Reset</button> 
+</form>
+
+
+<div class="progress" style="height:5px"> 
+	<div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+
+
+
+<!--<form>
+<br><br>
+<table border="1" cellpadding="10 px">
+<tbody>
+<tr>
+<th>user_id</th>
+<th>employee_id</th>
+<th>project_id</th>
+<th>task_id</th>
+<th>first_name</th>
+<th>last_name</th>
+</tr>
+<tr *ngFor="let u of data">
+<td>{{u.user_id}}</td>
+<td>{{u.employee_id}}</td>
+<td>{{u.project_id}}</td>
+<td>{{u.task_id}}</td>
+<td>{{u.first_name}}</td>
+<td>{{u.last_name}}</td>
+</tr>
+</tbody>
+</table>
+</form>
+-->
+<div class="card-container" >
+
+    <mat-list *ngFor="let u of data">
+      <mat-card class="mat-card">
+        <mat-card-content>
+          <p>
+           <b>First Name:</b> {{u.firstName}}
+          </p>
+         
+          <p>
+            <b>Last Name:</b> {{u.lastName}}
+          </p>
+          <p>
+            <b>Employee Id:</b> {{u.employeeId}}
+          </p>
+          <mat-card-actions class="card-actions">
+              <button  mat-raised-button  (click)="editUserByID(u.userId)">Edit User</button>
+              <button mat-raised-button (click)="deleteUserById(u.userId)">Delete User</button>    
+          </mat-card-actions>
+
+        </mat-card-content>
+        <!-- <mat-card-footer>
+          {{u.userId}}
+        </mat-card-footer> -->
+        
+      </mat-card><br>
+    </mat-list>
+</div>
+  
+  
+</div>

@@ -1,0 +1,30 @@
+  .mat-card {
+    max-width: 80vw;
+    margin: 10px 10px 10px 10px;
+  }
+  
+  
+  .card-container{
+    margin-left: 15vw;
+    width:80vw;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    height: auto;
+    overflow-x: hidden;
+    text-align: center;
+}
+
+.card-actions{
+   width: unset;
+}
+.mat-raised-button{
+    background: #005dff;
+    color: beige;
+    font-weight: bold;
+}
+.mat-card-footer {
+    font-size: small;
+    margin: 5px;
+    text-align: left;
+}

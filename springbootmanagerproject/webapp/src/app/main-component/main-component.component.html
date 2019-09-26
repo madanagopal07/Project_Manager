@@ -1,0 +1,162 @@
+<div class="container">
+	<!-- <h2>Project Manager</h2>
+	<button type="button" class="btn btn-primary">Add Project</button>
+	<button type="button" class="btn btn-primary">Add Task</button>
+	<button type="button" class="btn btn-primary">Add User</button>
+	<button type="button" class="btn btn-primary">View Task</button>
+	-->
+	   
+	   <br>
+	  <!-- <form style="background:url(https://wallpapercave.com/wp/7OpNa7a.jpg);">
+	   <p><b>Parent Id</b></p>
+	   <input type="text" name="parentId" class="form-control" [(ngModel)]="newTask.parent_id" placeholder="Ex: 123.." pattern="\d{10}" required/><br>
+	   <p><b>Project Id</b></p>
+	   <input type="text" name="projectId" class="form-control"  [(ngModel)]="newTask.project_id" placeholder="Ex: 123.." pattern="\d{10}" required/><br>
+	   <p><b>Task Name</b></p>
+	   <input type="text" name="taskName" class="form-control" [(ngModel)]="newTask.task" placeholder="Ex: Task Name" maxlength="20" required/><br>
+	   <p><b>Status Type</b></p>
+	   <input type="text" name="status" class="form-control" [(ngModel)]="newTask.status" placeholder="Ex: Status Type" maxlength="10" required/><br>
+	   <p><b>Priority Type</b></p>
+	   <input type="text" name="priority" class="form-control" [(ngModel)]="newTask.priority" placeholder="Ex: Priority Type" maxlength="12" required/>
+	   <br>
+	   
+	   
+  <button type="button" class="btn btn-primary" (click)="addMore()">Add Task</button> 
+  </form>
+  <li class="list-group-item">
+	   {{inputtext}}
+	   
+  </li>	
+  
+  <li class="list-group-item">
+	   {{sample}}
+	   
+  </li>
+  <li class="list-group-item" *ngFor="let smpl of smpls">{{smpl}}</li>
+  <br>-->
+  
+  <!--
+  <button (click)="getTask()">Fetch Task</button>
+  <br> 
+  <p>dataa:
+  {{data}} </p>
+  -->
+  <!--
+  <form>
+  <div>
+  <mat-list>
+	  <mat-list-item *ngFor="let t of data">
+		  <mat-card class="example-card">
+	<mat-card-content>
+	  <p>Task Id : {{t.task_id}}</p>
+	  <p>Task Id : {{t.parent_id}}</p>
+	  <p>Task Id : {{t.project_id}}</p>
+	  <p>Task Id : {{t.task}}</p>
+	  <p>Task Id : {{t.priority}}</p>
+	  <p>Task Id : {{t.status}}</p>
+	</mat-card-content>
+	<mat-card-actions>
+	  <button mat-button>Edit</button>
+	  <button mat-button>Delete</button>
+	</mat-card-actions>
+  </mat-card>
+	  </mat-list-item>
+	  </mat-list>
+  </div>
+  </form>
+  -->
+  
+  <!-- <mat-form-field>
+	<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search Task">
+  </mat-form-field> -->
+  
+  
+  <div >
+	  <mat-table  #table [dataSource]="dataSource" matSort class="mat-cell">
+		  <ng-container matColumnDef="taskId">
+			  <mat-header-cell *matHeaderCellDef mat-sort-header onclick="Edit">TaskId</mat-header-cell>
+			  <mat-cell *matCellDef="let task">{{task.taskId}}</mat-cell>
+		  </ng-container>
+		  <ng-container matColumnDef="task">
+			  <mat-header-cell *matHeaderCellDef mat-sort-header> Task</mat-header-cell>
+			  <mat-cell *matCellDef="let task">{{task.task}}</mat-cell>
+			  <!-- <mat-cell *matCellDef="let task">
+			  	<mat-form-field floatPlaceholder="{{ task.task ? 'float' : 'never'}}">
+					<input [formControl]="row.validator.controls['name']" placeholder="Name" matInput>
+				</mat-form-field> 
+			</mat-cell> -->
+			
+		  </ng-container>
+  
+		  <ng-container matColumnDef="parentTaskName">
+			  <mat-header-cell *matHeaderCellDef mat-sort-header>parent Task</mat-header-cell>
+			  <mat-cell *matCellDef="let task">{{task.parentTaskName}}</mat-cell>
+		  </ng-container>
+	  
+		  <ng-container matColumnDef="priority">
+			  <mat-header-cell *matHeaderCellDef mat-sort-header>Priority</mat-header-cell>
+			  <mat-cell *matCellDef="let task">{{task.priority}}</mat-cell>
+		  </ng-container>
+		  <ng-container matColumnDef="startDate">
+			  <mat-header-cell *matHeaderCellDef mat-sort-header>Start date</mat-header-cell>
+			  <mat-cell *matCellDef="let task">{{task.startDate}}</mat-cell>
+		  </ng-container>
+  
+		  <ng-container matColumnDef="endDate">
+			  <mat-header-cell *matHeaderCellDef mat-sort-header>End date</mat-header-cell>
+			  <mat-cell *matCellDef="let task">{{task.endDate}}</mat-cell>
+		  </ng-container>
+  
+		  <ng-container matColumnDef="actions" >
+			  <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+			  <mat-cell *matCellDef="let task">
+					  <button mat-icon-button>
+							  <mat-icon (click)="editTask(task)">Edit</mat-icon>
+							</button>
+							<button mat-icon-button>
+								  <mat-icon (click)="deleteTask(task)">Del</mat-icon>
+								</button>
+			  </mat-cell>
+
+			  <!-- <mat-cell *matCellDef="let task; let i=index;">
+				<button mat-icon-button color="accent" (click)="startEditTask(i, task.taskId, task.task, task.parentTaskName, task.priority, task.startDate, task.endDate)">
+				  <mat-icon aria-label="Edit">edit</mat-icon>
+				</button>
+		
+				<button mat-icon-button color="accent" (click)="deleteTask(task)">
+				  <mat-icon aria-label="Delete">delete</mat-icon>
+				</button>
+			  </mat-cell> -->
+		  </ng-container> 
+		  <mat-header-row *matHeaderRowDef="displayedColumns" colour="primary"></mat-header-row>
+		  <mat-row *matRowDef="let task; columns:displayedColumns"></mat-row>
+  
+	  </mat-table>
+  </div>
+  <!--
+  <form>
+  <br><br>
+  <table border="1" cellpadding="10 px">
+  <tbody>
+  <tr>
+  <th>task_id</th>
+  <th>parent_id</th>
+  <th>project_id</th>
+  <th>task</th>
+  <th>priority</th>
+  <th>status</th>
+  </tr>
+  <tr *ngFor="let t of data">
+  <td>{{t.task_id}}</td>
+  <td>{{t.parent_id}}</td>
+  <td>{{t.project_id}}</td>
+  <td>{{t.task_id}}</td>
+  <td>{{t.priority}}</td>
+  <td>{{t.status}}</td>
+  </tr>
+  </tbody>
+  </table>
+  </form>
+  -->
+  </div>
+  

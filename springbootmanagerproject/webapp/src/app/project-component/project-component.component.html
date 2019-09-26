@@ -1,0 +1,161 @@
+<div class="container">
+  <!-- <h2>Project Manager</h2>
+  <button type="button" class="btn btn-primary">Add Project</button>
+  <button type="button" class="btn btn-primary">Add Task</button>
+  <button type="button" class="btn btn-primary">Add User</button>
+  <button type="button" class="btn btn-primary">View Task</button>
+  -->
+     
+	 <br>
+	 <form style="background:url(https://wallpapercave.com/wp/7OpNa7a.jpg);">
+   
+    <p><b>Project</b></p>
+	 <input type="text" name="project" class="form-control" [(ngModel)]="newProject.project" placeholder="Project name.." pattern="\d{10}" required/><br>
+   
+   <input type="checkbox" name="isActive" [(ngModel)]="isActive">Click here to disable Start & End Date:
+  
+   <!-- <p><b>Start Date</b></p>
+	 <input type="date" id="startDate" class="form-control" [(ngModel)]="startDatein"  placeholder="yyyy-MM-dd" name="dp1" ngbDatepicker #dp1="ngbDatepicker" [disabled]="isActive"/>
+<div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="dp1.toggle()" type="button"  [disabled]="isActive">strt Dt</button>
+          </div> -->
+	 <div class="form-group">
+     <label for="date"> Start Date</label>
+     <input id="startDate" name="startDate" type="date" [(ngModel)]="newProject.startDate" placeholder="yyyy-MM-dd" class="form-control" [disabled]="isActive">
+   </div>
+
+		  <!-- <p><b>End Date</b></p>
+	 <input type="date" id="endDate" class="form-control" [(ngModel)]="endDatein"  placeholder="yyyy-MM-dd" name="dp2" ngbDatepicker #dp2="ngbDatepicker" [disabled]="isActive"/>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="dp2.toggle()" type="button"  [disabled]="isActive">End Dt</button>
+          </div> -->
+
+    <div class="form-group">
+      <label for="date"> End Date</label>
+        <input id="endDate" name="endDate" type="date" [(ngModel)]="newProject.endDate" class="form-control" [disabled]="isActive">
+    </div>
+
+          <p><b>Priority</b> <input type="text" [(ngModel)]="newProject.priority" name="sliderVal" ></p>
+          <ng5-slider [(value)]="newProject.priority" [options]="options"></ng5-slider>
+
+	 <p><b>Project Manager</b></p>
+	 <input type="text" name="manager" class="form-control" [(ngModel)]="fetchedUser.firstName" placeholder="manager" pattern="\d{10}" required/><br>
+	 <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Choose Project Manager</button><br>
+	 
+	 <br>
+	 
+<button type="button" class="btn btn-primary" (click)="addProject()" [disabled]="addEditButtonFlag">Add Project</button> 
+<button type="button" class="btn btn-primary" (click)="updateProject(newProject)" [disabled]="!addEditButtonFlag">Update Project</button> 
+</form>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="dateOfBirth">Manager User List</label>
+		<div>
+		<input type="text" [(ngModel)]="userId" name="userIdvalue" placeholder="Ex: UserID"/>
+		{{userId}}
+		<button class="btn btn-lg btn-outline-primary" (click)="getUserByID(userId)">Select the Manager ID</button>
+		</div>
+		<div>
+      <table  border="1" cellpadding="10 px">
+      <tbody>
+        <tr>
+          <th>userId</th>
+          <th>employeeId</th>
+          <th>firstName</th>
+          <th>lastName</th>
+        </tr>
+        <tr *ngFor="let u of userdata">
+          <td>{{u.userId}}</td>
+          <td>{{u.employeeId}}</td>
+          <td>{{u.firstName}}</td>
+          <td>{{u.lastName}}</td>
+        </tr>
+        </tbody>
+      </table>
+		</div>
+  </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+  </div>
+</ng-template>
+
+
+
+<hr>
+
+
+
+<!--<li class="list-group-item">
+	 {{inputtext}}
+	 
+</li>	
+
+<li class="list-group-item">
+	 {{sample}}
+	 
+</li>
+<li class="list-group-item" *ngFor="let smpl of smpls">{{smpl}}</li>
+<br> -->
+<!--<button (click)="getProject()">Fetch Project</button> -->
+<br> 
+<!--<form>
+<br><br>
+<table  border="1" cellpadding="10 px">
+<tbody>
+<tr>
+<th>project_id</th>
+<th>project</th>
+<th>priority</th>
+<th>start_date</th>
+<th>end_date</th>
+</tr>
+<tr *ngFor="let p of data">
+<td>{{p.project_id}}</td>
+<td>{{p.project}}</td>
+<td>{{p.priority}}</td>
+<td>{{p.start_date}}</td>
+<td>{{p.end_date}}</td>
+</tr>
+</tbody>
+</table>
+</form> -->
+<div class="card-container" >
+    <mat-list *ngFor="let p of data">
+      <mat-card class="mat-card">
+        <mat-card-content>
+          <p>
+            <b>Project:</b> {{p.project}}
+          </p>
+          <p>
+            <b>No Of Tasks:</b> {{p.noOfTasks}}
+          </p>
+          <p>
+            <b>Priority:</b> {{p.priority}}
+          </p>
+          <p>
+            <b>Start Date:</b> {{p.startDate}}
+          </p>
+          <p>
+            <b>End Date:</b> {{p.endDate}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions class="card-actions">  
+          <button mat-raised-button (click)="editProjectByID(p.projectId)">Edit Project</button>
+          <button mat-raised-button (click)="deleteProjectById(p.projectId)">Delete Project</button>
+      </mat-card-actions>
+      </mat-card><br>
+    </mat-list>
+    
+</div>
+</div>
